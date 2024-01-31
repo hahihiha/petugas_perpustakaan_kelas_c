@@ -2,6 +2,7 @@ import 'package:dio/dio.dart%20' as dio;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:petugas_perpustakaan_kelas_c/app/modules/book/controllers/book_controller.dart';
 import '../../../data/constant/endpoint.dart';
 import '../../../data/provider/api_provider.dart';
 import '../../../data/provider/storage_provider.dart';
@@ -15,6 +16,7 @@ class AddBookController extends GetxController {
   final TextEditingController tahunterbitController = TextEditingController();
   final loading = false.obs;
   final count = 0.obs;
+  final BookController _bookController = Get.find();
 
   @override
   void onInit() {
@@ -45,6 +47,7 @@ class AddBookController extends GetxController {
               "tahun_terbit": int.parse(tahunterbitController.text.toString()),
             });
         if (response.statusCode == 201) {
+          _bookController.getData();
           Get.toNamed(Routes.BOOK);
           Get.snackbar("Berhasil", "Buku berhasil di simpan", backgroundColor: Colors.green);
         } else {
