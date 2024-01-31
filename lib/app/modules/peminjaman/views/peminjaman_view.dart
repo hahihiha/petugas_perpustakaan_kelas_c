@@ -13,6 +13,7 @@ class PeminjamanView extends GetView<PeminjamanController> {
       appBar: AppBar(
         title: const Text('PeminjamanView'),
         centerTitle: true,
+        backgroundColor: Color(0xFF0CBD63),
       ),
       body: controller.obx((state) => ListView.separated(
         itemCount: state!.length,

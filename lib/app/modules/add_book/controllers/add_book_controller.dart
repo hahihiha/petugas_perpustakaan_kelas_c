@@ -48,7 +48,7 @@ class AddBookController extends GetxController {
             });
         if (response.statusCode == 201) {
           _bookController.getData();
-          Get.toNamed(Routes.BOOK);
+          Get.back();
           Get.snackbar("Berhasil", "Buku berhasil di simpan", backgroundColor: Colors.green);
         } else {
           Get.snackbar("Sorry", "Login Gagal", backgroundColor: Colors.orange);
